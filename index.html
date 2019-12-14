@@ -1,61 +1,47 @@
 <DOCTYPE html>
-    <html>
+<html lang="en">
 
-    <head>
-        <title>Giffy Collector</title>
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <link rel="stylesheet" href="./assests/css/style.css">
-        <!-- FONT -->
-        <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline&display=swap" rel="stylesheet">" rel="stylesheet">
-    </head>
+<head>
+  <meta charset="utf-8">
+  <title>Gif Homework</title>
+  </head>
 
-    <body>
-      <section>
-        <div class="container">
-          <div class="col-lg-10 col-lg-offset-1 text-center" id="header">
-            <span>GIFS CENTRAL</span>
-          </div>
-        </div>
-      </section>
-      <section id="searchSection">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center" id="searchButtonsContainer">
-            </div>
-          </div>
-        </div>
-      </section>
-        <section id="userInput">
-            <div class="container">
-               <row>
-                  <p class="col-lg-8 col-lg-offset-2">Enter Gif topic to add new search term:</p>
-              </row>
-                <div class="col-lg-8 col-lg-offset-2">
-                    <form class="form-inline">
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="GIFs Galore" id="submitBox">
-                            <button type="submit" class="btn btn-primary" id="submitTerm">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </section>
+  <body>
+    <button id="funny-button">hilarious funny button</button>
+    <div id="images">
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+    // Event listener for our funny-button
+    $("#funny-button").on("click", function() {
 
-        <section id="displaySection">
-          <div class='container'>
-            <div class="col-lg-12" id='showmetheGIFS'>
-        </div>
+      // Store our giphy API URL for a random funny image
+      var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=GBMCno9kIpWmgFW5gSEbyt6cgbvluJii&tag=funny";
 
-            </div>
-          </div>
-        </section>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <script src="./assests/javascript/app.js"></script>
-    </body>
+      // Perform an AJAX GET request
+      $.ajax({
+        url: queryURL,
+        method: "GET"
+      })
 
-    </html>
+      // Data from the AJAX request comes back
+      .then(function(response) {
+
+        // Saving the image_original_url property
+        var imageUrl = response.data.image_original_url;
+
+        // Creating and storing the image tag
+        var funnyImage = $("<img>");
+
+        // Setting the funnyImage src attribute to imageUrl
+        funnyImage.attr("src", imageUrl);
+        funnyImage.attr("alt", "funny image");
+
+        // Prepend the catImage to the image div
+        $("#images").prepend(funnyImage);
+      });
+    });
+    </script>
+  </body>  
+
+</html>

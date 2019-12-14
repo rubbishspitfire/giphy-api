@@ -1,33 +1,16 @@
-#userInput {
-	margin-top: 100px;
-}
-
-#header {
-	font-size: 100px;
-}
-
-body {
-	font-family: 'Fascinate Inline', cursive;
-}
-
-.gify {
-	border: 1px solid blue;
-}
-
-.gifcontainer {
+button {
 	margin: 10px;
-	display: flex;
-}
-.gifRating {
-	color: #000;
-	font-size: 15px;
+	display: inline;
 }
 
-.gif:hover {
-	cursor: pointer;
-	border: whitesmoke solid 7.0;
+#gif-form {
+	margin: 15px;
 }
 
-.searchButtons {
-	margin: 5px 10px;
+#add-gif {
+	margin-left: 20px;
+}
+
+#display-gifs {
+	display: inline;
 }
